@@ -1,0 +1,15 @@
+﻿<Application x:Class="ExpenditureManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ExpenditureManager"
+             StartupUri="Views/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./Styles/MainStyle.xaml"/>
+                <ResourceDictionary Source="./Styles/TextFieldStyle.xaml"/>
+                <ResourceDictionary Source="./Styles/GridViewStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

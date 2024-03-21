@@ -1,0 +1,176 @@
+﻿<Window x:Class="ExpensesManager.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpensesManager.Views"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        mc:Ignorable="d"
+        Title="" 
+        Height="450" 
+        Width="800" 
+        Cursor="AppStarting"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        >
+    <Grid
+        x:Name="mainContainer"
+        Margin="0,0,0,0"
+        Cursor="Arrow">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0"
+                Background="{StaticResource headerColor}"
+                Orientation="Horizontal"
+                Cursor="Hand"
+            >
+                <StackPanel x:Name="navbarOpen"
+                    Style="{StaticResource logoContainer}"
+                    MouseLeftButtonDown="navbarOpen_MouseLeftButtonDown" 
+                    Cursor="Hand"
+                    MouseEnter="navbarOpen_MouseEnter"
+                    MouseLeave="navbarOpen_MouseLeave"
+                >
+                    <StackPanel 
+                        x:Name="logoLineFirst"
+                        Style="{StaticResource logoLine}"
+                    ></StackPanel>
+                    <StackPanel
+                        x:Name="logoLineSecond"
+                        Style="{StaticResource logoLine}"
+                    ></StackPanel>
+                    <StackPanel
+                         x:Name="logoLineThird"
+                        Style="{StaticResource logoLine}"
+                    ></StackPanel>
+                </StackPanel>
+
+                <Image
+                    x:Name="navbarClose"
+                    MouseLeftButtonDown="navbarClose_MouseLeftButtonDown"
+                    MouseEnter="navbarClose_MouseEnter"
+                    MouseLeave="navbarClose_MouseLeave"
+                    Height="30"
+                    Width="30"
+                    Stretch="Fill"
+                    Margin="10 10"
+                    Cursor="Hand"
+                />
+               
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"
+                        Style="{StaticResource navbarContainer}">
+                <Image
+                    x:Name="search"
+                    Style="{StaticResource navbarImage}"
+                    Cursor="Hand"
+                    MouseEnter="search_MouseEnter"
+                    MouseLeave="search_MouseLeave"
+                >
+                    <Image.InputBindings>
+                        <MouseBinding 
+                            MouseAction="LeftClick" 
+                            Command="{Binding openSearchCommand}"/>
+                    </Image.InputBindings>
+
+                </Image>
+                
+            </StackPanel>
+
+            <StackPanel Grid.Row="2"
+                        Style="{StaticResource navbarContainer}">
+                <Image Grid.Row="2"
+                    x:Name="load"
+                    MouseEnter="load_MouseEnter"
+                    MouseLeave="load_MouseLeave"
+                    Style="{StaticResource navbarImage}"
+                >
+                    <Image.InputBindings>
+                        <MouseBinding 
+                            MouseAction="LeftClick" 
+                            Command="{Binding openLoadFormCommand}"/>
+                    </Image.InputBindings>
+                </Image>
+
+            </StackPanel>
+
+            <StackPanel Grid.Row="3"
+                        Style="{StaticResource navbarContainer}"
+>
+                <Image
+                    x:Name="settings"
+                    MouseEnter="settings_MouseEnter"
+                    MouseLeave="settings_MouseLeave"
+                    Style="{StaticResource navbarImage}"
+                >
+                    <Image.InputBindings>
+                        <MouseBinding 
+                            MouseAction="LeftClick" 
+                            Command="{Binding openSettingsCommand}"/>
+                    </Image.InputBindings>
+                </Image>
+            </StackPanel>
+            <StackPanel Grid.Row="4"
+                        Style="{StaticResource navbarContainer}">
+            </StackPanel>
+        </Grid>
+
+
+        <Grid x:Name="navbarPanel" Grid.Column="1" Margin="0,0,0,0" Cursor="Arrow">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"
+                         Background="{StaticResource headerColor}">
+            </StackPanel>
+            <StackPanel Grid.Row="1" 
+                        Margin="0,0,0,0"
+                        Grid.Column="0"
+                        Style="{StaticResource navbarContainer}" >
+
+                <ItemsControl ItemsSource="{Binding NavButtons }">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Label Style="{StaticResource navbarLbl}"
+                                Content="{Binding Key}"
+                            >
+                                <Label.InputBindings>
+                                    <MouseBinding 
+                                        MouseAction="LeftClick"
+                                        Command="{Binding Value}"
+                                        />
+                                </Label.InputBindings>
+                            </Label>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+            </StackPanel>
+
+        </Grid>
+
+        <Frame Grid.Column="2" 
+               NavigationUIVisibility="Hidden" 
+               Content="{Binding SelectedPage}" >
+        </Frame>
+        
+    </Grid>
+</Window>
