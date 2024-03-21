@@ -9,7 +9,7 @@ namespace ExpensesManager.ViewModels
 {
     class DocumentPageViewModel : BindableBase
     {
-        public DocumentPageViewModel(List<Param> items)
+        public DocumentPageViewModel(List<OrderParameter> items)
         {
             getItems(items);
             loadItemsAsync();
@@ -129,7 +129,7 @@ namespace ExpensesManager.ViewModels
                 RaisePropertyChanged(nameof(Item));
             }
         }
-        private void getItems(List<Param> items)
+        private void getItems(List<OrderParameter> items)
         {
             _items = new List<String>();
             foreach (var item in items)

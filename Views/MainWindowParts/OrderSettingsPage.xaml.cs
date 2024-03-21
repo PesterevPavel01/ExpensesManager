@@ -1,7 +1,7 @@
 ﻿using ExpensesManager.Models;
 using System.Windows.Controls;
 
-namespace ExpensesManager.Views
+namespace ExpensesManager.Views.MainWindowParts
 {
     /// <summary>
     /// Логика взаимодействия для ParamsPage.xaml

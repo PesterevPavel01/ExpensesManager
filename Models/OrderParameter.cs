@@ -3,7 +3,7 @@ using Prism.Mvvm;
 
 namespace ExpensesManager
 {
-    public class Param:BindableBase
+    public class OrderParameter:BindableBase
     {
         private string _id { get; set; }
         private string _name { get; set; }

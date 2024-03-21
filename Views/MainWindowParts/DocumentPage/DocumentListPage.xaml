@@ -41,6 +41,7 @@
             </Image>
 
             <StackPanel Grid.Column="0"
+                Name="DatePanel"
                 Background="{StaticResource headerColor}"
                 Orientation="Horizontal"
                 HorizontalAlignment="Right"
@@ -212,7 +213,7 @@
                     >
                         <Image.InputBindings>
                             <MouseBinding MouseAction="LeftClick" Command="{Binding loadDocumentListCommand}"
-                            />
+                            CommandParameter="{Binding ElementName=resultList}"/>
                         </Image.InputBindings>
                     </Image>
                 </Grid>

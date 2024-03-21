@@ -6,12 +6,12 @@ namespace ExpensesManager.Models.Controls
     {
         private bool flagUnSelect = true;
         private bool flagSelect = false;
-        public void activateOne(object currentItem, List<Param> _checkBoxList)
+        public void activateOne(object currentItem, List<OrderParameter> _checkBoxList)
         {
 
-            var currentParam = currentItem as Param;
+            var currentParam = currentItem as OrderParameter;
 
-            foreach (Param item in _checkBoxList)
+            foreach (OrderParameter item in _checkBoxList)
             {
                 if (item.id == currentParam.id) continue;
                 item.value = !currentParam.value;
@@ -19,15 +19,15 @@ namespace ExpensesManager.Models.Controls
 
         }
 
-        public void activateAll(object currentItem, List<Param> _checkBoxList, string expectedLabel = "Выделить все")
+        public void activateAll(object currentItem, List<OrderParameter> _checkBoxList, string expectedLabel = "Выделить все")
         {
-            var currentParam = currentItem as Param;
+            var currentParam = currentItem as OrderParameter;
 
             if (currentParam.name == expectedLabel && flagUnSelect)
             {
                 flagSelect = true;
 
-                foreach (Param item in _checkBoxList)
+                foreach (OrderParameter item in _checkBoxList)
                 {
                     if (item.id == currentParam.id) continue;
                     item.value = currentParam.value;
@@ -40,7 +40,7 @@ namespace ExpensesManager.Models.Controls
                 if (flagSelect) { return; }
                 if (!currentParam.value && flagUnSelect && currentParam.name != expectedLabel)
                 {
-                    foreach (Param item in _checkBoxList)
+                    foreach (OrderParameter item in _checkBoxList)
                     {
                         if (item.name == expectedLabel)
                         {

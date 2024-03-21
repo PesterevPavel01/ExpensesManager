@@ -1,5 +1,6 @@
 ﻿using ExpensesManager.Models;
 using ExpensesManager.Views;
+using ExpensesManager.Views.MainWindowParts;
 using ExpensesManager.Views.MainWindowParts.DocumentPage;
 using Prism.Commands;
 using Prism.Mvvm;
@@ -37,7 +38,7 @@ namespace ExpensesManager.ViewModels
             PreviewWidht = _docSettsContainerWidht;
             
 
-            _paramsPageViewModel = new ParamsPageViewModel();
+            _paramsPageViewModel = new OrderSettingsPageViewModel();
             _parameters = new(_icons);
             _parameters.DataContext = _paramsPageViewModel;
             ParamsPage = _parameters;
@@ -98,7 +99,9 @@ namespace ExpensesManager.ViewModels
             }
         }
 
-        private ParamsPageViewModel _paramsPageViewModel;
+        public DocumentListPage thisPage;
+
+        private OrderSettingsPageViewModel _paramsPageViewModel;
         private OrderSettingsPage _parameters;
         private Page _paramsPage;
 
@@ -278,7 +281,7 @@ namespace ExpensesManager.ViewModels
             ListSettingsWidht = (name == "listSettingsButton") ? "*" : "0";
         }
 
-        private async void LoadDocumentList(object param)
+        public async void LoadDocumentList(object param)
         {
             if (param != null)
             {

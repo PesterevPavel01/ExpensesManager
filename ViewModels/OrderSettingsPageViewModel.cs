@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace ExpensesManager
 {
-    class ParamsPageViewModel : BindableBase
+    class OrderSettingsPageViewModel : BindableBase
     {
-        public ParamsPageViewModel() {
+        public OrderSettingsPageViewModel() {
             _checkBoxItemControl = new CheckBoxItemControl();
             loadSearchSettingsItems();
             loadSearchSettingsTypes();
@@ -21,8 +21,8 @@ namespace ExpensesManager
 
         private CheckBoxItemControl _checkBoxItemControl;
 
-        private List<Param> _ReportFormat;
-        public List<Param> ReportFormat
+        private List<OrderParameter> _ReportFormat;
+        public List<OrderParameter> ReportFormat
         {
             get => _ReportFormat;
             set
@@ -32,8 +32,8 @@ namespace ExpensesManager
             }
         }
 
-        private List<Param> _SearchSettingsItems = new List<Param>();
-        public List<Param> SearchSettingsItems
+        private List<OrderParameter> _SearchSettingsItems = new List<OrderParameter>();
+        public List<OrderParameter> SearchSettingsItems
         {
             get => _SearchSettingsItems;
             set
@@ -58,12 +58,12 @@ namespace ExpensesManager
 
             if (response != null)
             {
-                SearchSettingsItems = new List<Param>();
+                SearchSettingsItems = new List<OrderParameter>();
 
                 foreach (ExpenditureDto model in response)
                 {
                     SearchSettingsItems.Add(
-                        new Param 
+                        new OrderParameter 
                         {
                             id=Convert.ToString(model.Id),
                             name=model.Name,
@@ -75,21 +75,21 @@ namespace ExpensesManager
 
         private void loadSearchSettingsTypes()
         {
-            _ReportFormat = new List<Param>() {
-                new Param { id = "0", name = "Список", value = true
+            _ReportFormat = new List<OrderParameter>() {
+                new OrderParameter { id = "0", name = "Список", value = true
                 },
-                new Param { id = "1", name = "Отчет", value = false } 
+                new OrderParameter { id = "1", name = "Отчет", value = false } 
             };
         }
 
         private void checkAll(object currentItem)
         {
 
-            var currentParam = currentItem as Param;
+            var currentParam = currentItem as OrderParameter;
 
             if (currentParam.name == "Выделить все")
             {
-                foreach (Param item in _ReportFormat)
+                foreach (OrderParameter item in _ReportFormat)
                 {
                     if (item.id == currentParam.id) continue;
                     item.value = !currentParam.value;
