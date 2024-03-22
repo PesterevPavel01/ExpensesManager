@@ -1,4 +1,5 @@
 ﻿using ExpensesManager.Models;
+using ExpensesManager.Services.Api;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -18,9 +19,9 @@ namespace ExpensesManager
             itemsDoubleClickCommand = new DelegateCommand<object>(itemsDoubleClick);
         }
         private readonly Icons _icons = new Icons();
-        private readonly ExpenditureService _expenditureService = new();
-        private readonly DepartnentService _departnentService = new();
-        private readonly OrganizationService _organizationService = new();
+        private readonly ExpenditureService _expenditureService = new("Expenditure");
+        private readonly DepartnentService _departnentService = new("Department");
+        private readonly OrganizationService _organizationService = new("Organization");
         public DelegateCommand<object> fieldsSelectionChangeCommand { get; set; }
         public DelegateCommand addNewItemCommand { get; set; }
 

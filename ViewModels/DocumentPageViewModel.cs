@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using ExpensesManager.Services.Api;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -21,9 +22,9 @@ namespace ExpensesManager.ViewModels
             updateListDepartmentsCommand = new DelegateCommand(loadDepartmentsAsync);
         }
 
-        OrganizationService _organizationService = new();
-        DepartnentService _departnentService = new();
-        ExpenditureService _expenditureService = new();
+        OrganizationService _organizationService = new("Organization");
+        DepartnentService _departnentService = new("Department");
+        ExpenditureService _expenditureService = new("Expenditure");
 
         public TextBox valueTextBox;
         public DelegateCommand updateListItemsCommand { get; set; }

@@ -1,5 +1,6 @@
 ﻿using ExpensesManager.Models;
 using ExpensesManager.Models.Controls;
+using ExpensesManager.Services.Api;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -52,7 +53,7 @@ namespace ExpensesManager
 
         private async void loadSearchSettingsItems()
         {
-            ExpenditureService _expenditureService = new ExpenditureService();
+            ExpenditureService _expenditureService = new ExpenditureService("Expenditure");
 
             var response = await _expenditureService.GetAllAsync();
 
